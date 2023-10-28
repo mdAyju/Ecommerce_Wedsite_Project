@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} UpdateAddress{% endblock title %}
+{% block content %}
+    {%if form.non_field_errors%}
+        {%for error in form.non_field_errors%}
+            <div class="alert alert-danger">{{error}}</div>
+        {%endfor%}
+    {%endif%}
+
+    {%if messages%}
+        {%for msg in messages%}
+        <div class="alert alert-{{msg.tags}}">{{msg}}</div>
+        {%endfor%}
+    {%endif%}
+
+
+
+<div class="container my-3">
+    <div class="row">
+        <h3>Welcome <span class='text-capitalize'>{{request.user}}</span></h3>
+        <div>{{add.name}}</div>
+    </div>
+    <div class="col-sm-8 offset-sm-3">
+        <form action="" novalidate method="post">
+            {% csrf_token %}
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <small class='text-danger'>{{fm.errors|striptags}}</small><br>
+            {% endfor %}
+            <div style='display:flex;gap:600px;'>
+                <button class="btn btn-primary">Update</button>
+                <button class='btn btn-danger'><a href="{%url 'address'%}" style='text-decoration:none; color:white;'>Back</a></button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<br><br>
+
+{% endblock content %}
+

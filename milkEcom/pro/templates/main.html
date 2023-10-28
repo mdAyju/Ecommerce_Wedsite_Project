@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block carousel %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{%static 'app/images/banner/b1.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'app/images/banner/b2.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'app/images/banner/b3.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'app/images/banner/b4.jpg'%}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock carousel %}
+
+{%block matter%}
+<div class='container bg-success text-center border-bottom shadow text-white p-5 '>
+    <h2>Products</h2>
+    <small>
+        These include products made from milk, such as cheese, yogurt, kefir, ice cream and butter. Cow's milk can be found around the world, as well as milk from other mammals like sheep and goats, among others. Dairy products like milk, cheese and yogurt each contain nutrients your body needs.
+    </small>
+</div>
+{%endblock matter%}
+
+
+{% block content %}
+<div class='container'>
+    <h1 class="text-center">Welcome to milk dairy</h1>
+    <br><br>
+
+    <div class='row container'>
+        <div class='col-md-4 col-sm-4 '>
+            <div class='buttermilk smbg'>
+                <a href="{% url 'categorys' 'ML' %}">
+                    <div class='goodnessecount text-center'>
+                        <img src="{%static 'app/images/buffalo-ghee.png'%}"
+                          class='img-responsive center-block' width=100%/>
+                        <p class='milkpro'>buffalo-ghee</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class='col-md-4 col-sm-4 '>
+            <div class='buttermilk smbg'>
+                <a href="{% url 'categorys' 'CR' %}">
+                    <div class='goodnessecount text-center'>
+                        <img src="{%static 'app/images/curd-total.png'%}"
+                          class='img-responsive center-block' width=100%/>
+                        <p class='milkpro'>curd</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class='col-md-4 col-sm-4 '>
+            <div class='buttermilk smbg'>
+                <a href="{% url 'categorys' 'IC' %}">
+                    <div class='text-center'>
+                        <img src="{%static 'app/images/kulfi.png'%}"
+                          class='img-responsive center-block' width=100%/>
+                        <p class='milkpro'>kulfi</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row container">
+        <div class="col-sm-4 col-md-4">
+            <div class='smbg'>
+                <a href="{% url 'categorys' 'MS' %}">
+                    <div class='text-center'>
+                        <img src="{%static 'app/images/milk-shake-strawberry.png'%}" alt=""width=100%/>
+                        <p>Strawberry Milk Shake</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <div class="buttermilk smbg">
+                <a href="{% url 'categorys' 'ML' %}">
+                    <div class="text-center">
+                        <img src="{% static 'app/images/cow-milk.png'%}" alt="" class='img-response center-block'width=100%>
+                        <p>Cow Milk</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <div class="buttermilk smbg">
+                <a href="{% url 'categorys' 'IC' %}">
+                    <div class="text-center">
+                        <img src="{% static 'app/images/icbars.png'%}" alt="" class='img-responsive center-block'width=100%>
+                        <p>Ice Bar</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+

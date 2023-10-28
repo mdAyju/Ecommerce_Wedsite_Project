@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}  Login{% endblock title %}
+
+
+{% block content %}
+
+{%if messages%}
+    {%for msg in messages%}
+        <div class='alert alert{{msg.tags}}'>{{msg}}</div>
+    {%endfor%}
+{%endif%}
+
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class='alert alert-danger '>{{error}}</p>
+{% endfor %}
+{% endif %}
+
+{% if messages %}
+{% for msg in messages %}
+<div class='alert alert{{msg.tags}}'>{{msg}}</div>
+{% endfor %}
+{% endif %}
+<div class="container ">
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h2>Login</h2>
+            <hr>
+            <form action="" method="post" novalidate class='shadow p-5'>
+                {% csrf_token %}
+                {%for fm in form%}
+                    {{fm.label_tag}}{{fm}}<small class='text-danger'> {{fm.errors|striptags}}</small>
+                {%endfor%}
+                <br>
+                <small><a href="{%url 'password_reset'%}">Forget Pasword</a></small>
+                <br><br>
+                <button class="btn btn-primary">Submit</button>
+                <div class="text-center fw-bold">
+                    <small>New user?
+                        <a href=" {%url 'customerRegistration'%}" class="text-danger">Create Account</a>
+                    </small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

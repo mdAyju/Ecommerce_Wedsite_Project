@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Buy{% endblock title %} 
+{% block content %}
+<div class="container mb-4">
+    <div class="row">
+        <h3>Welcome <span class="text-captalize ">{{request.user}}</span></h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid"><a href="{%url 'order'%}" class="btn btn-primary">Orders</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-8 offset-sm-2">
+            {% for op in order_placed %}
+            <div class="row px-3">
+                <div class="col-sm-2">
+                    <img src="{{op.product.product_image.url}}" class='image-fluid' width='100' height='100'>
+                </div>
+                <div class="col-sm-7 px-3">
+                    <p>Title :{{op.product.title}}</p>
+                    <p>Quantity :{{op.quantity}}</p>
+                    <p>Total cost :{{op.total_cost}}</p>
+                </div>
+                <div class="col-sm-3">
+                    <p>Order Status :{{op.status}}</p>
+                    {% if op.status == 'Accepted'%}
+                    <div class="progress">
+                        <div class="progress-bar"  aria-valuenow="20" style="width: 20%;"></div>
+                    </div>
+                    {%endif%}
+
+                    {% if  op.status == 'Packed' %}
+                        <div class='progress'>
+                            <div class='progress-bar bg-info' role='progressbar' aria-valuenow='40' style="width: 40%;"></div>
+                        </div>
+                    {% endif %}
+
+                    {% if  op.status == 'On the way' %}
+                    <div class='progress'>
+                        <div class='progress-bar bg-warning'  aria-valuenow='70' style="width: 70%;"></div>
+                    </div>
+                    {% endif %}
+
+                    {% if  op.status == 'Deliverd' %}
+                    <div class='progress'>
+                        <div class="progress-bar bg-success" style="width: 100%;"></div>
+                    </div>
+                    {% endif %}
+
+                    {% if  op.status == 'Cancel' %}
+                    <div class='progress'>
+                        <div class='progress-bar bg-danger' style="width: 100%;"></div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
